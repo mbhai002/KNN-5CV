@@ -74,14 +74,68 @@ for(int j=1; j<outer.size(); j++){
 
         }
 
+        System.out.println(outer.get(1).get(0));
+        System.out.println(outer.get(2).get(0));
+        System.out.println(outer.get(3).get(0));
+        System.out.println(outer.get(4).get(0));
+        System.out.println(outer.get(5).get(0));
+        System.out.println(outer.get(6).get(0));
+
+
         System.out.println(outer.get(1).get(3));
 
+        float ageS;
+        float educationS;
+        float ageT;
+        float educationT;
+        float distance=0;
+        float distanceMin=100;
+        int nn=0;
+        int count=0;
 
-for(int fold=1; fold <=5; fold++){
+
+for(int sample=1; sample<outer.size(); sample++){
+  //  System.out.println(outer.get(sample).get(6)+ "sample");
+    System.out.println("--------------------"+sample+"------------------------------------------------------------------");
+
+    if(outer.get(sample).get(6).contentEquals("5")){
+
+        ageS=parseFloat(outer.get(sample).get(0));
+        educationS=parseFloat(outer.get(sample).get(1));
+
+        for(int test=1; test<outer.size(); test++){
+            //System.out.println(outer.get(test).get(6) + " fold");
+            if(outer.get(test).get(6)!=outer.get(2).get(6)){
+             ageT=parseFloat(outer.get(test).get(0));educationT=parseFloat(outer.get(test).get(1));
+            // System.out.println("ageS "+ageS+ " agetT "+ageT+" sexeS "+sexeS+" sexeT "+sexeT );
+            distance= (float) Math.pow(ageS-ageT,2);
+             //System.out.println(distance+ " distance age");
+
+             distance=distance+(float)Math.pow(educationS-educationT,2);
+
+             //System.out.println(distance + " square");
+             distance= (float) Math.sqrt(distance);
+            // System.out.println(distance + " of sample "+ outer.indexOf(outer.get(test)));
+            }
+            if(distance<distanceMin){ distanceMin=distance;nn=outer.indexOf(outer.get(test)); }
+
+        }
+       // System.out.println(distanceMin + "distance min");
+
+    }
+    if(outer.get(sample).get(5).contentEquals(outer.get(nn).get(5))){
+        System.out.println(outer.get(sample).get(5)+ " sample n"+ outer.indexOf(outer.get(sample))+ "earn");
+        System.out.println(outer.get(nn).get(5)+ " sample n"+ outer.indexOf(outer.get(nn))+ "earn");
+
+        count++;
+
+    }
 
 
+distanceMin=100;
 
 }
+System.out.println(count + "count");
 
 
 
