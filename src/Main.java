@@ -136,38 +136,22 @@ for(int j=1; j<outer.size(); j++){
                         distance= (float) Math.pow(ageT-ageS,2)+(float)Math.pow(educationT-educationS,2)+(float)Math.pow(hoursT-hoursS,2)+(float)Math.pow(sexeT-sexeS,2);
                         distance= (float) Math.sqrt(distance);
 
-                        if(distancecheck.size()<35){
-                            distancecheck.add(distance);
-                            Collections.sort(distancecheck);
-                            distancem.add(distance);
-                            distancem.add((float) outer.indexOf(outer.get(test)));
-                            samplem.add(distancem);
-                        }
-                        if(distancecheck.size()==35){
-                            if(distance<distancecheck.get(34)){
-                                distancecheck.remove(34);
-                                distancecheck.add(distance);
-                                distancem.add(distance);
-                                distancem.add((float) outer.indexOf(outer.get(test)));
-                                samplem.add(distancem);
-                            }
-                            Collections.sort(distancecheck);
 
-                        }
+                        
 
-                       // distancecheck.add(distance);
+                        distancecheck.add(distance);
 
 
-                        //distancem.add(distance);
-                        //distancem.add((float) outer.indexOf(outer.get(test)));
-                       // samplem.add(distancem);
+                        distancem.add(distance);
+                        distancem.add((float) outer.indexOf(outer.get(test)));
+                        samplem.add(distancem);
                     }
                 }
 
                 // get K
                // System.out.println(distancecheck);
-                //Collections.sort(distancecheck);
-                check=distancecheck.get(34);
+                Collections.sort(distancecheck);
+                check=distancecheck.get(8);
                 System.out.println("distancecheck "+check);
 
                 //remove all element if distance is larger then K
